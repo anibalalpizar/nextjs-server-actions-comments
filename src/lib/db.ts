@@ -1,16 +1,16 @@
-import { Comment, comments } from "./data";
-import { User } from "./auth";
+import { Comment, comments } from "./data"
+import { User } from "./auth"
 
 type FindCommentsParams = {
-  take: number;
-  cursor?: { id: number };
-  sort?: "asc" | "desc";
-};
+  take: number
+  cursor?: { id: number }
+  sort?: "asc" | "desc"
+}
 
 type CreateCommentParams = {
-  text: string;
-  user: User;
-};
+  text: string
+  user: User
+}
 
 export const db = {
   async findComments({
@@ -19,17 +19,17 @@ export const db = {
     sort = "desc",
   }: FindCommentsParams): Promise<Comment[]> {
     const sortedComments = [...comments].sort((a, b) => {
-      const dateA = new Date(a.createdAt).getTime();
-      const dateB = new Date(b.createdAt).getTime();
-      return sort === "desc" ? dateB - dateA : dateA - dateB;
-    });
+      const dateA = new Date(a.createdAt).getTime()
+      const dateB = new Date(b.createdAt).getTime()
+      return sort === "desc" ? dateB - dateA : dateA - dateB
+    })
 
     const startIndex = cursor
       ? sortedComments.findIndex((comment) => comment.id === cursor.id)
-      : 0;
-    const endIndex = startIndex + take;
+      : 0
+    const endIndex = startIndex + take
 
-    return sortedComments.slice(startIndex, endIndex);
+    return sortedComments.slice(startIndex, endIndex)
   },
 
   async createComment({ text, user }: CreateCommentParams): Promise<Comment> {
@@ -38,9 +38,9 @@ export const db = {
       user,
       text,
       createdAt: new Date().toISOString(),
-    };
+    }
 
-    comments.push(newComment);
-    return newComment;
+    comments.push(newComment)
+    return newComment
   },
-};
+}
