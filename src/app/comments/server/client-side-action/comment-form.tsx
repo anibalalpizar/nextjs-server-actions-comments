@@ -19,7 +19,7 @@ export default function CommentForm() {
     setError(null)
     startTransition(async () => {
       try {
-        await createComment(input, user)
+        await createComment({ text: input }, user)
         startTransition(() => {
           setInput("")
         })
