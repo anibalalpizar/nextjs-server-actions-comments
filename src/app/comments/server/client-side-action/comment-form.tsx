@@ -2,7 +2,6 @@
 
 import { useState, useTransition } from "react"
 import { createComment } from "./actions"
-import { useUser } from "@/lib/auth"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,14 +11,12 @@ export default function CommentForm() {
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
 
-  const { user } = useUser()
-
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
     startTransition(async () => {
       try {
-        await createComment({ text: input }, user)
+        await createComment({ text: input })
         startTransition(() => {
           setInput("")
         })
