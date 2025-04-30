@@ -15,14 +15,14 @@ export default function CommentForm() {
     e.preventDefault()
     setError(null)
     startTransition(async () => {
-      try {
-        await createComment({ text: input })
-        startTransition(() => {
-          setInput("")
-        })
-      } catch (error) {
-        setError((error as Error).message)
+      const response = await createComment({ text: input })
+      if (response?.error) {
+        setError(response.error)
+        return
       }
+      startTransition(() => {
+        setInput("")
+      })
     })
   }
 
