@@ -1,8 +1,9 @@
+import { Suspense } from "react"
+import Link from "next/link"
+import { ArrowLeft, Loader2 } from "lucide-react"
+
 import { db } from "@/lib/db"
 import { delay } from "@/lib/utils"
-import { ArrowLeft, Loader2 } from "lucide-react"
-import Link from "next/link"
-import { Suspense } from "react"
 import { Comment } from "../../comment"
 import CommentForm from "./comment-form"
 
