@@ -1,10 +1,10 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
 import { getCurrentUser } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { delay } from "@/lib/utils"
-import { revalidatePath } from "next/cache"
-import { createCommentSchema } from "../../schema"
+import { createCommentSchema } from "@/app/comments/schema"
 
 type FormState = { text: string; error: string } | undefined
 
