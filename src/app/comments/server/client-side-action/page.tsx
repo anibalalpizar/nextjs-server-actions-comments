@@ -1,11 +1,11 @@
 import { Suspense } from "react"
 import Link from "next/link"
 import { ArrowLeft, Loader2 } from "lucide-react"
-import { db } from "@/lib/db"
-import { delay } from "@/lib/utils"
-
 import { Comment } from "@/app/comments/comment"
 import CommentForm from "./comment-form"
+
+import { db } from "@/lib/db"
+import { delay } from "@/lib/utils"
 
 export default function Page() {
   return (
@@ -26,7 +26,6 @@ export default function Page() {
 }
 
 async function CommentsList() {
-  // Artificial delay to pretend we're fetching from a database
   await delay(2000)
 
   const comments = await db.findComments({
