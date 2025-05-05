@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Comments Demo
 
-## Getting Started
+A comprehensive demonstration of different comment implementation patterns in Next.js, showcasing Server Actions, React Query, and infinite loading.
 
-First, run the development server:
+## Features
+
+- 🚀 Three different comment implementation patterns:
+  - Client-Side Server Action Calls
+  - React 19's `useActionState` Hook
+  - Server Actions with React Query & Infinite Loading
+- ⚡️ Built with Next.js 15 and React 19
+- 🎨 Beautiful UI with Tailwind CSS and shadcn/ui
+- 🔄 Real-time updates and optimistic UI
+- ♾️ Infinite scrolling with cursor-based pagination
+- 🎭 Error handling and loading states
+- 📱 Fully responsive design
+
+## Demo Pages
+
+1. **Client-Side Server Action Calls**
+   - Demonstrates proper handling of server actions in client components
+   - Shows why React transitions are crucial for server action calls
+
+2. **useActionState Hook**
+   - Showcases React 19's new `useActionState` hook
+   - Provides a simpler way to handle form state and submissions
+
+3. **Server Actions with React Query**
+   - Implements infinite loading with cursor-based pagination
+   - Shows best practices for combining server actions with React Query
+   - Demonstrates why server actions shouldn't be used for data fetching
+
+## Quick Start
+
+1. Clone and install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── comments/
+│   │   ├── infinite-loading/    # React Query implementation
+│   │   ├── server/
+│   │   │   ├── client-side-action/   # Client-side server actions
+│   │   │   └── use-action-state/     # useActionState hook demo
+│   │   └── comment.tsx         # Shared comment component
+│   └── api/
+│       └── comments/           # API routes for comments
+├── components/
+│   └── ui/                    # Shared UI components
+├── lib/
+│   ├── auth.ts               # Authentication utilities
+│   ├── data.ts              # Mock data store
+│   ├── db.ts               # Database operations
+│   └── utils.ts           # Helper functions
+└── providers/
+    └── ReactQueryProvider.tsx  # React Query configuration
+```
 
-## Learn More
+## Key Technologies
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js 15](https://nextjs.org)
+- [React 19](https://react.dev)
+- [React Query](https://tanstack.com/query)
+- [Tailwind CSS](https://tailwindcss.com)
+- [shadcn/ui](https://ui.shadcn.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Implementation Details
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Client-Side Server Action Calls
 
-## Deploy on Vercel
+- Uses React's `useTransition` for optimal loading states
+- Demonstrates proper error handling
+- Shows how to update UI optimistically
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### useActionState Hook
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Leverages React 19's new form handling capabilities
+- Provides a more streamlined approach to form state
+- Automatic loading and error state management
+
+### React Query Implementation
+
+- Implements infinite scrolling with cursor-based pagination
+- Optimistic updates for immediate feedback
+- Proper cache management and invalidation
+- Background data synchronization
+
+## Best Practices Demonstrated
+
+1. **Error Handling**
+   - Comprehensive error states
+   - User-friendly error messages
+   - Graceful fallbacks
+
+2. **Loading States**
+   - Skeleton loaders
+   - Loading indicators
+   - Disabled states during operations
+
+3. **Performance**
+   - Optimistic updates
+   - Efficient data fetching
+   - Proper caching strategies
+
+4. **User Experience**
+   - Immediate feedback
+   - Smooth transitions
+   - Responsive design
